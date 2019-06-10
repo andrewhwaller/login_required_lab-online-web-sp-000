@@ -3,7 +3,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-
+    if !params[:name] || params[:name].empty?
+      session[:name] = params[:name]
+    else
+      redirect_to controller: 'application', action: 'hello'
+    end
   end
 
   def destroy
